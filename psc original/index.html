@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Clínica de Psicologia — Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <div class="card">
+      <h1>Clínica de Psicologia</h1>
+      <p class="subtitle">Acesso ao sistema</p>
+
+      <label for="tipo">Sou:</label>
+      <select id="tipo">
+        <option value="paciente">Paciente</option>
+        <option value="psicologo">Psicólogo(a)</option>
+      </select>
+
+      <label for="user">Usuário</label>
+      <input id="user" type="text" placeholder="seu.usuario">
+
+      <label for="pass">Senha</label>
+      <input id="pass" type="password" placeholder="••••••••">
+
+      <button id="btnLogin">Entrar</button>
+
+      <div id="msg" class="msg"></div>
+    </div>
+  </main>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

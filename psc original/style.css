@@ -1,0 +1,97 @@
+:root {
+  --verde: #6cb28e;
+  --verde-escuro: #3e7c63;
+  --bg: #f4f9f6;
+  --card: #fff;
+  --text: #244a39;
+  --erro: #c0392b;
+  --sucesso: #2e7d32;
+}
+
+* { box-sizing: border-box; font-family: "Inter", sans-serif; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
+}
+
+.card {
+  background: var(--card);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  width: 340px;
+}
+
+h1 {
+  margin: 0 0 10px 0;
+  color: var(--verde-escuro);
+}
+
+.subtitle {
+  margin: 0 0 20px;
+  font-size: 14px;
+  color: #67806b;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #c9e3d4;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 11px;
+  background: var(--verde);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover { background: var(--verde-escuro); }
+
+.msg {
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 6px;
+  display: none;
+  font-size: 14px;
+  text-align: center;
+}
+
+.msg.error {
+  background: #ffebee;
+  color: var(--erro);
+  display: block;
+}
+
+.msg.success {
+  background: #e8f5e9;
+  color: var(--sucesso);
+  display: block;
+}

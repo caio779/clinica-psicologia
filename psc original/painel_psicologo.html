@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Painel do Psicólogo — Clínica de Psicologia</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    main { max-width: 1000px; margin: 40px auto; }
+    .topo { display:flex; justify-content:space-between; align-items:center; margin-bottom:25px; }
+    .btn { background:#e9f7ef; color:#2e7d32; border:none; padding:8px 12px; border-radius:8px; cursor:pointer; }
+    .btn:hover { background:#d6f0dc; }
+    .secao { margin-bottom: 35px; }
+    h3 { color:#2e7d32; margin-bottom:8px; }
+    table { width:100%; border-collapse:collapse; background:#fff; border-radius:10px; overflow:hidden; }
+    th, td { padding:10px 12px; border-bottom:1px solid #d8e9de; text-align:left; font-size:15px; }
+    th { background:#f0faf4; color:#2e7d32; }
+    tr:last-child td { border-bottom:none; }
+    .pacientes { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:15px; margin-top:10px; }
+    .cardPac { background:#fff; border:1px solid #d8e9de; border-radius:10px; padding:15px; }
+    .nomePac { font-weight:600; color:#244a39; }
+    .idadePac { font-size:14px; color:#67806b; margin-bottom:6px; }
+    .mensagens { background:#fff; border:1px solid #d8e9de; border-radius:10px; padding:15px; max-height:250px; overflow-y:auto; }
+    .msgItem { margin-bottom:10px; }
+    .msgItem strong { color:#2e7d32; }
+    .novaMsg { display:flex; margin-top:10px; }
+    .novaMsg input { flex:1; padding:8px; border:1px solid #c9e3d4; border-radius:8px 0 0 8px; }
+    .novaMsg button { border:none; background:#6cb28e; color:#fff; padding:8px 14px; border-radius:0 8px 8px 0; cursor:pointer; }
+    .config form { background:#fff; border:1px solid #d8e9de; border-radius:10px; padding:15px; }
+    .config label { display:block; margin-top:10px; font-size:14px; }
+    .config input { width:100%; padding:8px; margin-top:5px; border:1px solid #c9e3d4; border-radius:8px; }
+    .config button { margin-top:15px; padding:10px 14px; background:#6cb28e; color:#fff; border:none; border-radius:8px; cursor:pointer; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="topo">
+      <h2>Bem-vindo(a), Psicólogo(a)</h2>
+      <button class="btn" onclick="voltar()">Sair</button>
+    </div>
+
+    <!-- AGENDA -->
+    <section class="secao">
+      <h3>📅 Agenda e Atendimentos</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Data</th>
+            <th>Horário</th>
+            <th>Paciente</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>24/10/2025</td>
+            <td>14:00</td>
+            <td>Lucas Andrade</td>
+            <td>Concluído</td>
+          </tr>
+          <tr>
+            <td>25/10/2025</td>
+            <td>15:00</td>
+            <td>Ana Souza</td>
+            <td>Confirmado</td>
+          </tr>
+          <tr>
+            <td>26/10/2025</td>
+            <td>10:00</td>
+            <td>João Mendes</td>
+            <td>Pendente</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- PACIENTES -->
+    <section class="secao">
+      <h3>👥 Meus Pacientes</h3>
+      <div class="pacientes">
+        <div class="cardPac">
+          <div class="nomePac">Ana Souza</div>
+          <div class="idadePac">29 anos</div>
+          <p>Motivo: Ansiedade generalizada.</p>
+          <p>Última sessão: 18/10/2025</p>
+        </div>
+        <div class="cardPac">
+          <div class="nomePac">João Mendes</div>
+          <div class="idadePac">35 anos</div>
+          <p>Motivo: Estresse ocupacional.</p>
+          <p>Última sessão: 15/10/2025</p>
+        </div>
+        <div class="cardPac">
+          <div class="nomePac">Lucas Andrade</div>
+          <div class="idadePac">22 anos</div>
+          <p>Motivo: Autoconhecimento e foco pessoal.</p>
+          <p>Última sessão: 21/10/2025</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MENSAGENS -->
+    <section class="secao">
+      <h3>💬 Mensagens com Pacientes</h3>
+      <div class="mensagens" id="mensagens">
+        <div class="msgItem"><strong>Ana:</strong> Doutor, posso remarcar a sessão de sábado?</div>
+        <div class="msgItem"><strong>Você:</strong> Claro! Qual dia seria melhor pra você?</div>
+        <div class="msgItem"><strong>Ana:</strong> Segunda às 14h seria possível?</div>
+      </div>
+      <div class="novaMsg">
+        <input type="text" id="novaMsgInput" placeholder="Escreva uma resposta...">
+        <button onclick="enviarMensagem()">Enviar</button>
+      </div>
+    </section>
+
+    <!-- CONFIGURAÇÕES -->
+    <section class="secao config">
+      <h3>⚙️ Configurações</h3>
+      <form onsubmit="salvarConfig(event)">
+        <label for="nome">Nome completo</label>
+        <input type="text" id="nome" value="Dr. Rafael Nogueira">
+
+        <label for="email">E-mail</label>
+        <input type="email" id="email" value="rafael@clinicapsicologia.com">
+
+        <label for="especialidade">Especialidade</label>
+        <input type="text" id="especialidade" value="Psicologia Humanista">
+
+        <button type="submit">Salvar Alterações</button>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    function voltar() {
+      alert('Saindo da área do psicólogo...');
+      location.href = 'index.html';
+    }
+
+    function enviarMensagem() {
+      const input = document.getElementById('novaMsgInput');
+      const texto = input.value.trim();
+      if (!texto) return;
+
+      const box = document.getElementById('mensagens');
+      const div = document.createElement('div');
+      div.className = 'msgItem';
+      div.innerHTML = '<strong>Você:</strong> ' + texto;
+      box.appendChild(div);
+
+      input.value = '';
+      box.scrollTop = box.scrollHeight;
+    }
+
+    function salvarConfig(e) {
+      e.preventDefault();
+      alert('Configurações salvas com sucesso! (Simulado)');
+    }
+  </script>
+</body>
+</html>
